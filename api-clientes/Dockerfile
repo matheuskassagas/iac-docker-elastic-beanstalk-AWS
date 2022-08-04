@@ -9,4 +9,12 @@ COPY . /home/ubuntu/tcc
 
 RUN pip install -r requirements.txt
 
-RUN sed -i "s/ALLOWED_HOST = []/ALLOWED_HOST = ['*']/"
+RUN sed -i "s/ALLOWED_HOST = \[\]/ALLOWED_HOST = \['*'\]/" setup/settings.py
+
+RUN python manage.py migrate
+
+RUN python manage.py loaddata clientes.json
+
+ENTRYPOINT python manage.py runserver 0.0.0.0:8000
+
+EXPOSE 8000
