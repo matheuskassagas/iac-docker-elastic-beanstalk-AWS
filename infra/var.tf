@@ -1,0 +1,3 @@
+variable "nameECR" {
+  type = string 
+}
