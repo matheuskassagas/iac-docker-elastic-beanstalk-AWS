@@ -13,3 +13,11 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+### Terraform ###
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
