@@ -9,6 +9,7 @@ terraform apply
 ```
 
 ## Segundo passo 
+- Criar a imagem 
 ```
 cd .. 
 cd ..
