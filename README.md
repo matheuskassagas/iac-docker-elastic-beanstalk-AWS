@@ -1,3 +1,5 @@
+# Aplicacao Docker rodando em ambiente Beanstalk
+
 ## Primeiro passo 
 - Criar o bucket 
 ```
@@ -50,13 +52,22 @@ aws ecr get-login-password --region region | docker login --username AWS --passw
 docker tag docker_image_id aws_account_id.dkr.ecr.region.amazonaws.com/my-repository:tag
 docker push aws_account_id.dkr.ecr.region.amazonaws.com/my-repository:tag
 ```
-
+---
 **O Dockerrun.aws.json é parte essencial para executarmos uma aplicação no beanstalk**
 
----
 ## Quinto passo
 - em /env/prod/Dockerrun.aws.json colocar o nome da imagem da imagem 
 - zip o arquivo Dockerrun
 ```
 zip -r producao.zip Dockerrun.aws.json
+```
+- atualizar o projeto com as alteracoes feitas no s3
+```
+terraform apply 
+```
+
+---
+## Atualizar ambiente de versao 
+```
+aws elasticbeanstalk update-environment --environment-name ambiente-de-producao --version-label ambiente-de-producao
 ```
