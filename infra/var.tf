@@ -1,4 +1,4 @@
-variable "nameECR" {
+variable "name" {
   type = string 
 }
 

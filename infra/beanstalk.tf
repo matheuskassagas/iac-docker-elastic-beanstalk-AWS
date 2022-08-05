@@ -24,5 +24,12 @@ resource "aws_elastic_beanstalk_environment" "ambiente_beanstalk" {
     name      = "IamInstanceProfile"
     value     = aws_iam_instance_profile.beanstalk_ec2_profile.name
   }
+}
 
+resource "aws_elastic_beanstalk_application_version" "default" {
+  name        = var.ambiente
+  application = var.name
+  description = var.descricao
+  bucket      = aws_s3_bucket.beanstalk_deplays.id
+  key         = aws_s3_object.dockerRun.id
 }

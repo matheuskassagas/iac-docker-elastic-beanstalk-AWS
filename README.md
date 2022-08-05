@@ -8,6 +8,7 @@ terraform plan
 terraform apply 
 ```
 
+---
 ## Segundo passo 
 - Criar a imagem 
 ```
@@ -20,6 +21,7 @@ docker build . -t producao:V1
 docker images
 ```
 
+---
 ## Terceiro passo
 - Acesse a pasta de prod
 ```
@@ -30,6 +32,7 @@ terraform plan
 terraform apply 
 ```
 
+---
 ## Quarto passo
 - Subir imagem do docker no ecr
 - Substitua: 
@@ -48,13 +51,12 @@ docker tag docker_image_id aws_account_id.dkr.ecr.region.amazonaws.com/my-reposi
 docker push aws_account_id.dkr.ecr.region.amazonaws.com/my-repository:tag
 ```
 
-## Quinto passo
-- em /env/prod/Dockerrum.aws.json colocar o nome da imagem da imagem 
+**O Dockerrun.aws.json é parte essencial para executarmos uma aplicação no beanstalk**
 
+---
 ## Quinto passo
-cd .. 
-cd env/homolog
-terraform init
-terraform plan 
-terraform apply 
+- em /env/prod/Dockerrun.aws.json colocar o nome da imagem da imagem 
+- zip o arquivo Dockerrun
+```
+zip -r producao.zip Dockerrun.aws.json
 ```
