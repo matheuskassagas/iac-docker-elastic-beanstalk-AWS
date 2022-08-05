@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "mgk-terraform-state" {
   # Seta nome e ambiente deste bucket
   tags = {
     Name        = "mgk-terraform-state"
-    Environment = var.environment
+    Environment = "dev"
   }
 
   # Habilite o controle de versão para que possamos ver o histórico de revisão completo de nosso
@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "mgk-terraform-state" {
 
 # seta permissão de privado para o bucket
 resource "aws_s3_bucket_public_access_block" "mgk-terraform-state" {
-  bucket = aws_s3_bucket.remf-terraform-state.id
+  bucket = aws_s3_bucket.mgk-terraform-state.id
 
   block_public_acls       = true
   block_public_policy     = true
